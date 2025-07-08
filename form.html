@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Science Salary Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+  <div class="header">
+    <h1>Data Science Salary Predictor</h1>
+    <p>Get accurate salary predictions based on your experience,<br> job role, and other factors</p>
+  </div>
+
+  <div class="container">
+    <form method="POST" action="/predict">
+      <h2>Enter Your Details</h2>
+
+      <label>Work Year</label>
+      <input type="number" name="work_year" required value="2024"/>
+
+      <label>Experience Level</label>
+      <select name="experience_level" required>
+        <option value="EN">Entry Level (EN)</option>
+        <option value="MI">Mid Level (MI)</option>
+        <option value="SE">Senior Level (SE)</option>
+        <option value="EX">Executive (EX)</option>
+      </select>
+
+      <label>Employment Type</label>
+      <select name="employment_type" required>
+        <option value="FT">Full-time (FT)</option>
+        <option value="PT">Part-time (PT)</option>
+        <option value="CT">Contract (CT)</option>
+        <option value="FL">Freelance (FL)</option>
+      </select>
+
+      <label>Job Title</label>
+      <select name="job_title" required>
+        <option value="Data Scientist">Data Scientist</option>
+        <option value="Data Engineer">Data Engineer</option>
+        <option value="ML Engineer">ML Engineer</option>
+        <option value="Data Analyst">Data Analyst</option>
+      </select>
+
+      <label>Country of Residence</label>
+      <select name="employee_residence" required>
+        <option value="US">United States</option>
+        <option value="IN">India</option>
+        <option value="UK">United Kingdom</option>
+        <option value="CA">Canada</option>
+      </select>
+
+      <label>Remote Work Ratio (%)</label>
+      <input type="range" min="0" max="100" step="10" name="remote_ratio" id="remote_slider" value="100"/>
+      <p><span id="slider_value">100</span>% Remote</p>
+
+      <label>Company Location</label>
+      <select name="company_location" required>
+        <option value="US">United States</option>
+        <option value="IN">India</option>
+        <option value="UK">United Kingdom</option>
+        <option value="CA">Canada</option>
+      </select>
+
+      <label>Company Size</label>
+      <select name="company_size" required>
+        <option value="S">Small (S)</option>
+        <option value="M">Medium (M)</option>
+        <option value="L">Large (L)</option>
+      </select>
+
+      <input type="submit" class="submit-btn" value="Predict Salary" />
+    </form>
+
+    {% if prediction %}
+      <h2 class="result">Predicted Salary: ₹{{ prediction }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="footer">
+    © 2024 AI Salary Predictor <br>
+    Powered by Machine Learning Models
+  </div>
+</body>
+</html>
