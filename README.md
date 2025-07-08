@@ -95,14 +95,7 @@ new_df = pd.DataFrame([new_candidate])
 predicted_salary = model.predict(new_df)[0]
 print("Predicted Salary: $", round(predicted_salary, 2))
 
-#requirement txt.file
-flask
-pandas
-numpy
-scikit-learn
-joblib
-
-
-
+  
+          
 
 
